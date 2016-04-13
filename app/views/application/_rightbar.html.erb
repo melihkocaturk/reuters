@@ -1,0 +1,86 @@
+							<!-- BEGIN .widget -->
+							<div class="widget">
+								<h3>SOSYAL AĞLAR</h3>
+								<div class="widget-social">
+									<div class="social-bar">
+										<a href="#" class="social-icon"><i class="number">1.2m</i><span class="facebook">Facebook</span></a>
+										<a href="#" class="social-icon"><i class="number">2.6k</i><span class="twitter">Twitter</span></a>
+										<a href="#" class="social-icon"><i class="number">1.4k</i><span class="google">Google+</span></a>
+										<a href="#" class="social-icon"><i class="number">823</i><span class="linkedin">Linkedin</span></a>
+									</div>
+									<p>Sosyal Ağlar üzerinden bizi takip ederek en güncel haberlere ulaşın.</p>
+								</div>
+							<!-- END .widget -->
+							</div>
+							
+							<!-- BEGIN .widget -->
+							<div class="widget">
+								<h3>Son Haberler</h3>
+								<div class="widget-articles">
+									<ul>
+										<% last_news.each do |news| %>
+										<li>
+											<div class="article-photo">
+								        <%= link_to news_path(news), class: 'hover-effect' do %>
+								          <%= image_tag news.image.url(:small), alt: news.title %>
+								        <% end %>
+											</div>
+											<div class="article-content">
+												<h4><%= link_to truncate(news.title, length: 60, omission: '...'), news_path(news) %>
+													<a href="#" class="h-comment">201</a></h4>
+												<span class="meta">
+													<a href="#"><span class="icon-text">&#128340;</span><%= news.created_at.to_formatted_s(:nice) %></a>
+												</span>
+											</div>
+										</li>
+										<% end %>
+									</ul>
+								</div>
+							<!-- END .widget -->
+							</div>
+							
+							<!-- BEGIN .widget -->
+							<div class="widget">
+								<h3>Son Yorumlar</h3>
+								<div class="widget-comments">
+									<ul>
+										<li>
+											<div class="comment-photo">
+												<span class="hover-effect"><img src="/assets/allegro/photos/avatar-1.jpg" alt="" /></span>
+											</div>
+											<div class="comment-content">
+												<h3>Bran Sabas</h3>
+												<p>Suscipit partiendo comprehensam ne eos mel, nam omnis maiestatis no. Eum at reformidans ius, cu sonet tollit mea</p>
+												<span class="meta">
+													<a href="post.html"><span class="icon-text">&#59212;</span>View Article</a>
+												</span>
+											</div>
+										</li>
+										<li>
+											<div class="comment-photo">
+												<a href="#" class="hover-effect"><img src="/assets/allegro/photos/avatar-2.jpg" alt="" /></a>
+											</div>
+											<div class="comment-content">
+												<h3><a href="#">Orange-Themes</a></h3>
+												<p>Sed primis voluptaria voluptatum et, cum ex accusam fierent honestatis. Duo illum saperet no. Errem verterem legendos eu.</p>
+												<span class="meta">
+													<a href="post.html"><span class="icon-text">&#59212;</span>View Article</a>
+												</span>
+											</div>
+										</li>
+										<li>
+											<div class="comment-photo">
+												<span class="hover-effect"><img src="/assets/allegro/photos/avatar-3.jpg" alt="" /></span>
+											</div>
+											<div class="comment-content">
+												<h3>Spencer Abner</h3>
+												<p>Cu malorum molestiae intellegat qui. Molestiae hendrerit cu his.</p>
+												<span class="meta">
+													<a href="post.html"><span class="icon-text">&#59212;</span>View Article</a>
+												</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+							<!-- END .widget -->
+							</div>

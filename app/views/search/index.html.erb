@@ -1,0 +1,93 @@
+			<!-- BEGIN .content -->
+			<div class="content">
+				
+				<!-- BEGIN .wrapper -->
+				<div class="wrapper">
+					
+					<div class="ad-banner">
+						<a href="contact-us.html" class="ad-link top"><span class="icon-text">&#9662;</span>Reklam<span class="icon-text">&#9662;</span></a>
+						<a href="#" target="_blank"><img src="/assets/allegro/no-banner-728x90.jpg" alt="" /></a>
+					</div>
+
+					<div class="main-content">
+
+						<!-- BEGIN .main-page -->
+						<div class="main-page left">
+
+							<!-- BEGIN .single-block -->
+							<div class="single-block">
+								
+								<!-- BEGIN .content-block -->
+								<div class="content-block main left">
+									
+									<div class="block">
+										<div class="block-title">
+											<%= link_to "Anasayfaya dön", root_path, class: 'right' %>
+											<h2>Arama Sonuçları</h2>
+										</div>
+										<div class="block-content">
+											
+											<% @results.each do |news| %>
+											<div class="article-big">
+												<div class="article-photo">
+									        <%= link_to news_path(news), class: 'hover-effect' do %>
+									          <%= image_tag news.image.url(:medium), alt: news.title %>
+									        <% end %>
+												</div>
+												<div class="article-content">
+													<h2><%= link_to news.title, news_path(news) %><a href="#" class="h-comment">201</a></h2>
+													<span class="meta">
+														<a href="#"><span class="icon-text">&#128100;</span><%= news.user.name %></a>
+														<a href="#"><span class="icon-text">&#128340;</span><%= news.created_at.to_formatted_s(:nice) %></a>
+													</span>
+													<p><%= news.description %></p>
+													<span class="meta">
+														<%= link_to news_path(news), class: 'more' do %>
+														Devamını Oku<span class="icon-text">&#9656;</span>
+														<% end %>
+													</span>
+												</div>
+											</div>
+											<% end %>
+											
+											<div class="pagination">
+												<%= paginate @results %>
+											</div>
+
+										</div>
+									</div>
+
+								<!-- END .content-block -->
+								</div>
+
+							<!-- END .single-block -->
+							</div>
+
+						<!-- END .main-page -->
+						</div>
+						
+						
+						<!-- BEGIN .main-sidebar -->
+						<div class="main-sidebar right">
+							
+							<!-- BEGIN .widget -->
+							<div class="widget">
+								<a href="#" target="_blank"><img src="/assets/allegro/no-banner-300x250.jpg" alt="" /></a>
+								<a href="contact-us.html" class="ad-link"><span class="icon-text">&#9652;</span>Reklam<span class="icon-text">&#9652;</span></a>
+							<!-- END .widget -->
+							</div>
+							
+							<%= render 'rightbar' %>
+
+						<!-- END .main-sidebar -->
+						</div>
+
+						<div class="clear-float"></div>
+
+					</div>
+					
+				<!-- END .wrapper -->
+				</div>
+				
+			<!-- END .content -->
+			</div>

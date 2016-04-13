@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<!-- BEGIN html -->
+<html lang = "en">
+	<!-- BEGIN head -->
+	<head>
+	  <%= display_meta_tags site: 'Reuters', description: 'Reuters haber ajansı' %>
+	  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+
+		<!-- Meta Tags -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="/assets/allegro/favicon.ico" type="image/x-icon" />
+
+		<!-- Stylesheets -->
+		<%= stylesheet_link_tag  'allegro/reset' %>
+		<%= stylesheet_link_tag  'allegro/main-stylesheet' %>
+		<%= stylesheet_link_tag  'allegro/lightbox' %>
+		<%= stylesheet_link_tag  'allegro/shortcode' %>
+		<%= stylesheet_link_tag  'allegro/fonts' %>
+		<%= stylesheet_link_tag  'allegro/colors' %>
+
+		<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" href="css/ie-ancient.css" />
+		<![endif]-->
+		<%= stylesheet_link_tag  'allegro/responsive' %>
+
+		<!-- Demo Only -->
+		<%= stylesheet_link_tag  'allegro/demo-settings' %>
+
+	<!-- END head -->
+	</head>
+
+	<!-- BEGIN body -->
+	<body>
+
+		<!-- BEGIN .boxed -->
+		<div class="boxed">
+			
+			<!-- BEGIN .header -->
+			<div class="header">
+				
+				<!-- BEGIN .wrapper -->
+				<div class="wrapper">
+					
+					<div class="header-logo">
+						<!-- <h1><a href="index.html">Allegro</a></h1> -->
+						<%= link_to root_path do %>
+						<img src="/assets/allegro/logo-header.gif" alt="Reuters" />
+						<% end %>
+					</div>
+					
+					<div class="header-menu">
+						<ul>
+							<li><a href="#">Künye</a></li>
+							<li><a href="#">Reklam</a></li>
+							<li><a href="#">Üye Olun</a></li>
+						</ul>
+						<p>Reuters haber ajansına ait yazı, resim ve haberlerin her hakkı saklıdır. İzinsiz, kaynak gösterilmeden kullanılamaz.</p>
+					</div>
+					
+					<div class="header-addons">
+						<div class="header-weather">
+							<span class="report">+14°C</span>
+							<img src="/assets/allegro/weather-sun-cloud.png" alt="" />
+							<span class="city"><small>Bulutlu</small><b>Türkiye, Bursa</b></span>
+						</div>
+						<div class="header-search">
+							<%= search_form_for(@search_in_site, url: search_path, method: "get") do |f| %>
+								<%= f.search_field :title_or_description_cont, class: "search-input", placeholder: "Aranacak kelime.." %>
+								<%= f.submit "Search", class: "search-button" %>
+							<% end %>
+						</div>
+					</div>
+					
+				<!-- END .wrapper -->
+				</div>
+
+				<div class="main-menu sticky">
+					
+					<!-- BEGIN .wrapper -->
+					<div class="wrapper">
+						
+						<ul class="the-menu">
+
+							<li><%= link_to "ANASAYFA", root_path %></li>
+							<li><a href="#"><span>HABERLER</span></a>
+								<ul>
+									<% @categories.each do |category| %>
+									<li><%= link_to category.name, category_path(category) %></li>
+									<% end %>
+								</ul>
+							</li>
+							<li><a href="#">BLOG</a></li>
+							<li><a href="#">VİDEO</a></li>
+							<li><a href="#">FOTOĞRAF</a></li>
+							<li><a href="#">ARŞİV</a></li>
+							<li><a href="#">İLETİŞİM</a></li>
+						</ul>
+
+					<!-- END .wrapper -->
+					</div>
+
+				</div>
+
+				<div class="secondary-menu">
+					
+					<!-- BEGIN .wrapper -->
+					<div class="wrapper">
+						
+						<ul>
+							<% @categories.each do |category| %>
+							<li><%= link_to category.name, category_path(category) %></li>
+							<% end %>
+						</ul>
+
+					<!-- END .wrapper -->
+					</div>
+
+				</div>
+				
+			<!-- END .header -->
+			</div>
+			
+			<%= yield %>
+			
+			<!-- BEGIN .footer -->
+			<div class="footer">
+				
+				<!-- BEGIN .wrapper -->
+				<div class="wrapper">
+
+					<ul class="right">
+						<li><a href="#">Anasayfa</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Video</a></li>
+						<li><a href="#">Fotoğraf</a></li>
+						<li><a href="#">Arşiv</a></li>
+						<li><a href="#">İletişim</a></li>
+					</ul>
+
+					<%= link_to root_path, class: 'logo-footer' do %>
+					<img src="/assets/allegro/logo-footer.png" alt="Reuters" />
+					<% end %>
+					
+					<p>&copy; 2016 <b>Reuters</b> haber ajansı. Tüm hakları saklıdır.<br/>Yazılım <a href="http://www.code2.co/" target="_blank">Code2.co</a></p>
+					
+				<!-- END .wrapper -->
+				</div>
+				
+			<!-- END .footer -->
+			</div>
+			
+		<!-- END .boxed -->
+		</div>
+
+		<!-- Scripts -->
+		<%= javascript_include_tag 'allegro/jquery-latest.min' %>
+		<%= javascript_include_tag 'allegro/theme-scripts' %>
+		<%= javascript_include_tag 'allegro/lightbox' %>
+		<%#= javascript_include_tag 'allegro/demo-settings' %>
+
+	<!-- END body -->
+	</body>
+<!-- END html -->
+</html>
